@@ -1,0 +1,13 @@
+// bajar jquery en la consola de JavaScript
+var script = document.createElement('script');
+script.src = "https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js";
+document.getElementsByTagName('head')[0].appendChild(script);
+// agarrar las URL
+var urls = $('.rg_di .rg_meta').map(function() { return JSON.parse($(this).text()).ou; });
+// escriba las direcciones a archivar (una por línea)
+var textToSave = urls.toArray().join('\n');
+var hiddenElement = document.createElement('a');
+hiddenElement.href = 'data:attachment/text,' + encodeURI(textToSave);
+hiddenElement.target = '_blank';
+hiddenElement.download = 'urls.txt';
+hiddenElement.click();
